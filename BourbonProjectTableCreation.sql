@@ -1,3 +1,10 @@
+IF NOT EXISTS 
+   (
+     SELECT name FROM master.dbo.sysdatabases 
+     WHERE name = N'BourbonTasting'
+    )
+CREATE DATABASE [BourbonTasting]
+
 DROP TABLE IF EXISTS EventsToEmployees, Events, Employees, Companies, Holidays
 
 CREATE TABLE Holidays (
