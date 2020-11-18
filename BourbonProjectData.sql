@@ -1,3 +1,5 @@
+USE BourbonTasting
+
 insert into Employees (FirstName, LastName) values ('John', 'Locken');
 insert into Employees (FirstName, LastName) values ('Aften', 'Locken');
 insert into Employees (FirstName, LastName) values ('Dew', 'Melsom');

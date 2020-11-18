@@ -1,16 +1,4 @@
-
-
-/*query to add holidays to table. Holidays used in lower SELECT WHERE statement*/
-INSERT INTO Holidays (HolidayName, HolidayDate)
-VALUES
-	('Christmas' ,'2019-12-25'),
-	('Fourth of July', '2019-07-01'),
-	('New Years Day', '2019-01-01'),
-	('Thanksgiving', '2020-11-28'),
-	('Christmas', '2020-12-15'),
-	('Fourth of July', '2020-07-01'),
-	('New Years Day', '2020-01-01'),
-	('Thanksgiving', '2020-11-26')
+USE BourbonTasting
 
 /*NCI with one key column*/
 CREATE NONCLUSTERED INDEX IX_EventTime ON Events
@@ -18,7 +6,6 @@ CREATE NONCLUSTERED INDEX IX_EventTime ON Events
 	EventTime
 )
 
-SELECT TOP 10 * FROM Events
 /*NCI with 2 key columns*/
 ALTER TABLE Events ADD Len_EventName as (len(EventName))
 CREATE NONCLUSTERED INDEX IX_Event_Name_Length_Last_Name ON Events
@@ -185,8 +172,15 @@ ON Events.CompanyID = Companies.CompanyID
 WHERE EventTime IN (
 	SELECT EventTime 
 	FROM Events 
-	JOIN Holidays
-	ON CONVERT(Date, EventTime) = Holidays.HolidayDate
+	WHERE CONVERT(Date, EventTime) IN (
+			'2019-12-25',
+			'2019-07-01',
+			'2019-01-01',
+			'2020-11-28',
+			'2020-12-15',
+			'2020-07-01',
+			'2020-01-01',
+			'2020-11-26')
 )
 
 
