@@ -77,9 +77,6 @@ SELECT EventID
 FROM EventsToEmployees
 WHERE EmployeeID = 9
 
-SELECT * FROM Employees WHERE EmployeeID = 9
-SELECT * FROM @table_to_delete2
-
 DELETE
 FROM EventsToEmployees 
 WHERE EventID IN (SELECT EventNumber FROM @table_to_delete2)
